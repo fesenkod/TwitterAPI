@@ -1,0 +1,71 @@
+body {
+  margin-top: 30px;
+  padding: 0;
+}
+
+.container h3 {
+  margin-bottom: 5%;
+}
+
+.checkbox label {
+  padding: 1px;
+  width: 100%;
+}
+
+.form-group ul li {
+  margin-right: 15px;
+}
+
+.container .checkbox input {
+  display: none;
+}
+
+.checkbox img {
+  width: 22px;
+  position: relative;
+  float: left;
+}
+
+.checkbox label span {
+  margin-left: 5px;
+  width: 100%;
+}
+
+i.fa-asterisk {
+  color: red;
+  font-size: 0.6em;
+  position: relative;
+  bottom: 2px;
+}
+
+.container .checkbox img.checked {
+  display: none;
+}
+
+.container .checkbox input:checked ~ img.unchecked {
+  display: none;
+}
+
+.container .checkbox input:checked ~ img.checked {
+  display: inline-block;
+}
+
+.error-channel {
+  position: relative;
+  color: #a94442;
+  margin-left: 5px;
+  top: 5px;
+}
+
+span.btn-link {
+  cursor: pointer;
+}
+
+.publications-container ul {
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.publ-heading {
+  margin-bottom: 0;
+}
