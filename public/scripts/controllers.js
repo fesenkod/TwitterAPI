@@ -5,33 +5,30 @@ twitterApiApp.controller("proposeNewsCtrl", ['channelsFactory', 'postNewsFactory
 
   $scope.postNews = postNewsFactory.postNews;
 
-  $scope.selectedChannels = [];
+  //$scope.selectedChannels = [];
   $scope.isChannelSelected = false;
   $scope.isClickOnChannel = false;
 
   $scope.isChecked = function (id) {
     $scope.isClickOnChannel = true;
-    var index = $scope.selectedChannels.indexOf(id);
-    if (index == -1) {
-          $scope.selectedChannels.push(id);
-      }
-    else {
-          $scope.selectedChannels.splice(index, 1);
-    };
-    if ($scope.selectedChannels.length != 0) {
+    if ($scope.selectedChannels.channels.length != 0) {
       $scope.isChannelSelected = true;
     }
     else {
       $scope.isChannelSelected = false;
     }
-    console.log($scope.selectedChannels);
+    console.log($scope.selectedChannels.channels);
+  };
+
+  $scope.selectedChannels = {
+    channels: []
   };
 
   $scope.clearForm = function () {
     $scope.proposeNewsForm.$setPristine();
     $scope.newsText = "";
     $scope.author = "";
-    $scope.selectedChannels = [];
+    $scope.selectedChannels.channels = [];
   };
 
 }]);

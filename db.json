@@ -146,6 +146,41 @@
         "Channel 3"
       ],
       "id": 11
+    },
+    {
+      "text": "Test checklist-model",
+      "author": "Super Tester",
+      "timestamp": "2017-03-22T14:25:23.550Z",
+      "channels": [],
+      "id": 12
+    },
+    {
+      "text": "Another checklist-model test",
+      "author": "QA",
+      "timestamp": "2017-03-22T14:28:03.820Z",
+      "channels": [],
+      "id": 13
+    },
+    {
+      "text": "Test of checkboxes",
+      "author": "some author",
+      "timestamp": "2017-03-22T14:30:53.118Z",
+      "channels": [
+        "Channel 2",
+        "Channel 3"
+      ],
+      "id": 14
+    },
+    {
+      "text": "Final checkboxes testing",
+      "author": "dima",
+      "timestamp": "2017-03-22T14:32:08.847Z",
+      "channels": [
+        "Channel 1",
+        "Channel 10",
+        "Channel 5"
+      ],
+      "id": 15
     }
   ]
 }

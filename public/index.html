@@ -22,6 +22,7 @@
    <script src="scripts/controllers.js"></script>
    <script src="scripts/ng-text-truncate.js"></script>
    <script src="scripts/ng-infinite-scroll.js"></script>
+   <script src='scripts/checklist-model.js'></script>
 
    <link rel="stylesheet" href="styles/style.css">
 
@@ -55,7 +56,7 @@
               <ul class="list-unstyled list-inline col-xs-12" ng-cloak>
                 <li ng-repeat="channel in channelsList">
                   <div class="checkbox">
-                      <label><input type="checkbox" value="" ng-click="isChecked(channel.id)">
+                      <label><input type="checkbox" checklist-model="selectedChannels.channels" checklist-value="channel.name" ng-click="isChecked(channel.id)">
                         <img src="images/checkbox-unchecked.png" alt="" class="unchecked">
                         <img src="images/checkbox.png" alt="" class="checked"><span>{{channel.name}}</span>
                       </label>
@@ -71,7 +72,7 @@
                   <input class="form-control" id="author" type="text" name="author" ng-model="author">
               </div>
             </div>
-            <button type="button" ng-click="postNews(proposeNewsForm, newsText, selectedChannels, author); clearForm()" class="btn btn-primary"
+            <button type="button" ng-click="postNews(newsText, selectedChannels, author); clearForm()" class="btn btn-primary"
             name="button" ng-disabled="proposeNewsForm.$invalid || !isChannelSelected" ng-cloak>
               Submit!
             </button>

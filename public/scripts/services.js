@@ -30,7 +30,7 @@ angular.module('twitterApiApp').factory('publicationsFactory', ['$http', functio
 
     publicationsFact.getQueryStart();
     var query = publicationsFact.queryStart ? ("&_start="+publicationsFact.queryStart) : "";
-    
+
     $http.get("/Publications?_sort=timestamp&_order=DESC" + query + "&_limit=3").then(function(response) {
       for (var i = 0; i < response.data.length; i++) {
         publicationsFact.publications.push(response.data[i]);
@@ -48,18 +48,13 @@ angular.module('twitterApiApp').factory('postNewsFactory', ['$http', 'publicatio
                                                       function($http, publicationsFactory, channelsFactory) {
   var postNewsFact = {};
 
-  postNewsFact.postNews = function (form, newsText, selectedChannels, author) {
+  postNewsFact.postNews = function (newsText, selectedChannels, author) {
     var time = new Date().toISOString();
-    var channels = [];
-    for (var i = 0; i < selectedChannels.length; i++) {
-      channels.push(channelsFactory.channels[selectedChannels[i]-1].name)
-    };
-
     var newPublication = {
       "text": newsText,
       "author": author,
       "timestamp": time,
-      "channels": channels
+      "channels": selectedChannels.channels
     };
     $http.post("/Publications", newPublication).then(function(response) {
         publicationsFactory.publications.splice(0, 0, response.data);
