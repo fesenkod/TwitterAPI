@@ -82,8 +82,8 @@
 
       <div class="col-xs-12 publications-container" ng-controller="showPublicationsCtrl">
         <h3 class="publ-heading">Proposed Publications</h3>
-        <ul class="list-group" infinite-scroll="publicationsFactory.getPublications()" infinite-scroll-disabled='publicationsFactory.busyLoadingData'>
-          <li ng-repeat="publication in publicationsFactory.publications" class="list-unstyled list-group-item" ng-cloak>
+        <ul class="list-group" infinite-scroll="uploadMore()" infinite-scroll-disabled='publicationsFactory.busyLoadingData'>
+          <li ng-repeat="publication in publications" class="list-unstyled list-group-item" ng-cloak>
             <p class="text-warning">Author: <i>{{publication.author}},   {{publication.timestamp | date: 'MMM. d, y, H:mm'}}</i></p>
             <p ng-text-truncate="publication.text" ng-tt-words-threshold="3">{{publication.text}}</p>
             <p class="text-muted">Channels: <i>{{publication.channels.join(", ")}}</i></p>

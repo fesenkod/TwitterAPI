@@ -181,6 +181,16 @@
         "Channel 5"
       ],
       "id": 15
+    },
+    {
+      "text": "One more test",
+      "author": "Bla bla bla",
+      "timestamp": "2017-03-24T16:55:51.824Z",
+      "channels": [
+        "Channel 4",
+        "Channel 5"
+      ],
+      "id": 16
     }
   ]
 }

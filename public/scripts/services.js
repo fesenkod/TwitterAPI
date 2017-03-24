@@ -1,4 +1,5 @@
-angular.module('twitterApiApp').factory('channelsFactory', ['$http', function($http) {
+angular.module('twitterApiApp').factory('channelsFactory', ['$http', '$q', function($http, $q) {
+  var deferred = $q.defer();
   // service object to return
   var channelsFact = {};
   channelsFact.channels = [];
@@ -8,14 +9,22 @@ angular.module('twitterApiApp').factory('channelsFactory', ['$http', function($h
       for (var i = 0; i < response.data.length; i++) {
         channelsFact.channels.push(response.data[i]);
       };
+      deferred.resolve(channelsFact.channels);
+    }, function(error) {
+        // Reject promise with error message
+        deferred.reject(error.message);
     });
+    // Return promise
+    return deferred.promise;
   };
   return channelsFact;
 }]);
 
 
 
-angular.module('twitterApiApp').factory('publicationsFactory', ['$http', function($http) {
+angular.module('twitterApiApp').factory('publicationsFactory', ['$http', '$q', function($http, $q) {
+  var deferred = $q.defer();
+
   var publicationsFact = {};
   publicationsFact.publications = [];
   publicationsFact.busyLoadingData = false;
@@ -36,8 +45,13 @@ angular.module('twitterApiApp').factory('publicationsFactory', ['$http', functio
         publicationsFact.publications.push(response.data[i]);
       };
       publicationsFact.busyLoadingData = false;
+      deferred.resolve(publicationsFact.publications);
+    }, function(error) {
+       // Reject promise with error message
+       deferred.reject(error.message);
     });
-
+    // Return promise
+    return deferred.promise;
   };
   return publicationsFact;
 }]);

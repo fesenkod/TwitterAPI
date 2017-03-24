@@ -1,13 +1,17 @@
 twitterApiApp.controller("proposeNewsCtrl", ['channelsFactory', 'postNewsFactory', '$scope', function (channelsFactory, postNewsFactory, $scope) {
 
-  $scope.channelsList = channelsFactory.channels;
-  channelsFactory.getChannels();
+  $scope.init = function () {
+    $scope.postNews = postNewsFactory.postNews;
+    $scope.isChannelSelected = false;
+    $scope.isClickOnChannel = false;
+    $scope.selectedChannels = { channels: [] };
+  };
 
-  $scope.postNews = postNewsFactory.postNews;
+  $scope.init();
 
-  //$scope.selectedChannels = [];
-  $scope.isChannelSelected = false;
-  $scope.isClickOnChannel = false;
+  channelsFactory.getChannels().then(function(results) {
+        $scope.channelsList = results;
+    });
 
   $scope.isChecked = function (id) {
     $scope.isClickOnChannel = true;
@@ -20,20 +24,21 @@ twitterApiApp.controller("proposeNewsCtrl", ['channelsFactory', 'postNewsFactory
     console.log($scope.selectedChannels.channels);
   };
 
-  $scope.selectedChannels = {
-    channels: []
-  };
-
   $scope.clearForm = function () {
     $scope.proposeNewsForm.$setPristine();
     $scope.newsText = "";
     $scope.author = "";
     $scope.selectedChannels.channels = [];
   };
-
 }]);
+
 
 twitterApiApp.controller("showPublicationsCtrl", ['publicationsFactory', '$scope', function (publicationsFactory, $scope) {
   $scope.publicationsFactory = publicationsFactory;
-  $scope.publicationsFactory.getPublications();
+  $scope.uploadMore = function() {
+    $scope.publicationsFactory.getPublications().then(function(results) {
+          $scope.publications = results;
+      });
+  };
+  $scope.uploadMore();
 }]);
